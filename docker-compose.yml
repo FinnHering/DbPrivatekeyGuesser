@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:17
+    container_name: postgres_container
+    environment:
+      POSTGRES_USER: example_user  # Benutzername für PostgreSQL
+      POSTGRES_PASSWORD: example_password  # Passwort für PostgreSQL
+      POSTGRES_DB: example_db  # Name der automatisch erstellten Datenbank
+    ports:
+      - "5432:5432"  # Zugriff auf PostgreSQL über den lokalen Port 5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # Persistente Volumes, um Daten bei Neustart zu behalten
+
+volumes:
+  postgres_data: {}
